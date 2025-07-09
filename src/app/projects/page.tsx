@@ -4,62 +4,82 @@ import MainLayout from '@/components/layout/MainLayout';
 export default function Projects() {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce platform built with Next.js, featuring AI-powered product recommendations and seamless payment integration.",
+      title: "AI-Powered Newsletter Automation Platform",
+      subtitle: "In Progress",
+      description: "This in-development platform uses AI to auto-generate and publish daily content across multiple niche websites. Built with Django, Next.js, n8n, and GPT-4.",
       image: "/api/placeholder/600/400",
-      technologies: ["Next.js", "TypeScript", "Stripe", "OpenAI", "Tailwind CSS"],
-      category: "Web Development",
+      technologies: ["Django", "Next.js", "n8n", "GPT-4", "AI Automation"],
+      category: "AI Platform",
       link: "#",
-      featured: true
+      featured: true,
+      status: "in-progress",
+      external: false
     },
     {
-      title: "AI Chatbot Assistant",
-      description: "Custom AI chatbot integrated with business knowledge base, providing instant customer support and lead qualification.",
+      title: "Personal Portfolio & Engineering Blog",
+      subtitle: "Internal Project",
+      description: "Built with React and Tailwind, this site showcases the developer behind FrostByte Lab — featuring project highlights, technical writing, and resume access.",
       image: "/api/placeholder/600/400",
-      technologies: ["React", "OpenAI API", "Node.js", "MongoDB", "WebSocket"],
-      category: "AI Integration",
-      link: "#",
-      featured: true
+      technologies: ["React", "Tailwind CSS", "Portfolio", "Blog"],
+      category: "Personal Site",
+      link: "https://chrisklemz.dev",
+      featured: true,
+      status: "live",
+      external: true
     },
     {
-      title: "Mobile Fitness App",
-      description: "Cross-platform fitness tracking app with personalized workout plans and progress analytics.",
+      title: "AI-Powered Virtual Pet App",
+      subtitle: "Coming Soon",
+      description: "A mobile app featuring a customizable AI chatbot pet that lives on your phone's home screen. Designed for fun, interactivity, and monetizable upgrades.",
       image: "/api/placeholder/600/400",
-      technologies: ["React Native", "Firebase", "Redux", "HealthKit", "Google Fit"],
-      category: "App Development",
+      technologies: ["React Native", "AI Chatbot", "Mobile App", "Monetization"],
+      category: "Mobile App",
       link: "#",
-      featured: false
+      featured: false,
+      status: "coming-soon",
+      external: false
     },
     {
-      title: "Real Estate Dashboard",
-      description: "Comprehensive real estate management dashboard with property listings, analytics, and client management.",
+      title: "Sustainable Living Storefront",
+      subtitle: "Planning",
+      description: "This ecommerce microsite will feature eco-friendly products and AI-generated content that guides conscious consumer choices. Focused on simplicity and purpose.",
       image: "/api/placeholder/600/400",
-      technologies: ["React", "Node.js", "PostgreSQL", "Chart.js", "AWS"],
-      category: "Web Development",
+      technologies: ["Ecommerce", "AI Content", "Sustainability", "Microsite"],
+      category: "Ecommerce",
       link: "#",
-      featured: false
-    },
-    {
-      title: "SaaS Analytics Platform",
-      description: "Business intelligence platform providing real-time analytics and insights for SaaS companies.",
-      image: "/api/placeholder/600/400",
-      technologies: ["Next.js", "Python", "TensorFlow", "Redis", "Docker"],
-      category: "Digital Products",
-      link: "#",
-      featured: false
-    },
-    {
-      title: "API Gateway Service",
-      description: "Scalable API gateway with authentication, rate limiting, and monitoring for microservices architecture.",
-      image: "/api/placeholder/600/400",
-      technologies: ["Node.js", "Express", "Redis", "JWT", "Prometheus"],
-      category: "API Development",
-      link: "#",
-      featured: false
+      featured: false,
+      status: "planning",
+      external: false
     }
   ];
 
-  const categories = ["All", "Web Development", "AI Integration", "App Development", "Digital Products", "API Development"];
+  const getStatusBadge = (status: string) => {
+    const badges = {
+      'in-progress': {
+        text: 'In Progress',
+        classes: 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200'
+      },
+      'live': {
+        text: 'Live',
+        classes: 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+      },
+      'coming-soon': {
+        text: 'Coming Soon',
+        classes: 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200'
+      },
+      'planning': {
+        text: 'Planning',
+        classes: 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200'
+      }
+    };
+    
+    const badge = badges[status as keyof typeof badges];
+    return (
+      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${badge.classes}`}>
+        {badge.text}
+      </span>
+    );
+  };
 
   return (
     <MainLayout>
@@ -67,10 +87,10 @@ export default function Projects() {
       <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Projects
+            What We're Building at FrostByte Lab
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Showcasing innovative solutions and successful client projects
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
+            These are early-stage tools, platforms, and experiments currently being developed at FrostByte Lab. More projects are coming soon.
           </p>
           <Link
             href="/contact"
@@ -86,10 +106,10 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Featured Projects
+              Current Projects
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Highlighting some of my most impactful work
+              Active development and live platforms
             </p>
           </div>
 
@@ -101,7 +121,7 @@ export default function Projects() {
                     <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <p className="text-sm opacity-75">Project Screenshot</p>
+                    <p className="text-sm opacity-75">Project Preview</p>
                   </div>
                 </div>
                 <div className="p-8">
@@ -109,13 +129,16 @@ export default function Projects() {
                     <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                       {project.category}
                     </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                      Featured
-                    </span>
+                    {getStatusBadge(project.status)}
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                     {project.title}
                   </h3>
+                  {project.subtitle && (
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                      {project.subtitle}
+                    </p>
+                  )}
                   <p className="text-gray-600 dark:text-gray-300 mb-6">
                     {project.description}
                   </p>
@@ -129,12 +152,20 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <Link
-                    href={project.link}
-                    className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                  >
-                    View Project Details →
-                  </Link>
+                  {project.external ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                    >
+                      Visit Project →
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center text-gray-500 dark:text-gray-400 font-medium">
+                      {project.status === 'in-progress' ? 'In Development' : 'Coming Soon'}
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -150,7 +181,7 @@ export default function Projects() {
               All Projects
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              A comprehensive portfolio of my work across different technologies and industries
+              Complete portfolio of current and upcoming projects
             </p>
           </div>
 
@@ -170,15 +201,16 @@ export default function Projects() {
                     <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
                       {project.category}
                     </span>
-                    {project.featured && (
-                      <span className="text-xs bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded-full">
-                        Featured
-                      </span>
-                    )}
+                    {getStatusBadge(project.status)}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                     {project.title}
                   </h3>
+                  {project.subtitle && (
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                      {project.subtitle}
+                    </p>
+                  )}
                   <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
                     {project.description}
                   </p>
@@ -197,12 +229,20 @@ export default function Projects() {
                       </span>
                     )}
                   </div>
-                  <Link
-                    href={project.link}
-                    className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
-                  >
-                    Learn More →
-                  </Link>
+                  {project.external ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
+                    >
+                      Visit Project →
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center text-gray-500 dark:text-gray-400 text-sm font-medium">
+                      {project.status === 'in-progress' ? 'In Development' : 'Coming Soon'}
+                    </span>
+                  )}
                 </div>
               </div>
             ))}
@@ -210,82 +250,37 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Case Study Section */}
+      {/* Future Projects Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              Case Studies
+              What's Next
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Detailed insights into project challenges, solutions, and outcomes
+              More innovative projects are in the pipeline
             </p>
           </div>
 
-          <div className="space-y-12">
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                E-Commerce Platform Transformation
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Challenge</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Legacy system with poor performance and limited scalability
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Solution</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Modern Next.js platform with AI recommendations and optimized UX
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Results</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    300% increase in conversion rate, 50% faster load times
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="#"
-                className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium"
-              >
-                Read Full Case Study →
-              </Link>
+          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
-
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                AI-Powered Customer Support
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Challenge</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    High support ticket volume overwhelming customer service team
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Solution</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Custom AI chatbot with business knowledge integration
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Results</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    70% reduction in support tickets, 24/7 customer assistance
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="#"
-                className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium"
-              >
-                Read Full Case Study →
-              </Link>
-            </div>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              More Projects Coming Soon
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+              We're constantly experimenting with new technologies and building innovative solutions. 
+              Stay tuned for more AI-powered tools, mobile apps, and digital products.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200"
+            >
+              Get in Touch
+            </Link>
           </div>
         </div>
       </section>
@@ -294,7 +289,7 @@ export default function Projects() {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Build Your Next Project?
+            Ready to Build Something Together?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
             Let's create something amazing together. Get in touch to discuss your project requirements.
