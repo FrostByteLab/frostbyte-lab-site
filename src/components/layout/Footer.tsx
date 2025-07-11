@@ -2,20 +2,20 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <footer className="bg-muted border-t border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">F</span>
               </div>
-              <span className="font-bold text-xl text-gray-900 dark:text-white">
+              <span className="font-bold text-xl text-foreground">
                 FrostByte Lab
               </span>
             </Link>
-            <p className="text-gray-600 dark:text-gray-400 mb-4 max-w-md">
+            <p className="text-secondary mb-4 max-w-md">
               Professional freelance software development, AI integrations, and digital product launches. 
               Developer-led solutions for modern businesses.
             </p>
@@ -24,7 +24,7 @@ export default function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className="text-secondary hover:text-foreground transition-colors"
               >
                 <span className="sr-only">GitHub</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className="text-secondary hover:text-foreground transition-colors"
               >
                 <span className="sr-only">LinkedIn</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -47,27 +47,27 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white tracking-wider uppercase mb-4">
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase mb-4">
               Services
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                <Link href="/services" className="text-secondary hover:text-primary transition-colors">
                   Web Development
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                <Link href="/services" className="text-secondary hover:text-primary transition-colors">
                   AI Integration
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                <Link href="/services" className="text-secondary hover:text-primary transition-colors">
                   App Development
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                <Link href="/services" className="text-secondary hover:text-primary transition-colors">
                   Digital Products
                 </Link>
               </li>
@@ -76,20 +76,20 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-white tracking-wider uppercase mb-4">
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase mb-4">
               Contact
             </h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="mailto:hello@frostbytelab.com"
-                  className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors"
+                  className="text-secondary hover:text-primary transition-colors"
                 >
                   hello@frostbytelab.com
                 </a>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors">
+                <Link href="/contact" className="text-secondary hover:text-primary transition-colors">
                   Get a Quote
                 </Link>
               </li>
@@ -97,8 +97,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <p className="text-center text-gray-500 dark:text-gray-400 text-sm">
+        <div className="mt-8 pt-8 border-t border-border">
+          <p className="text-center text-secondary text-sm">
             © {new Date().getFullYear()} FrostByte Lab. All rights reserved.
           </p>
         </div>

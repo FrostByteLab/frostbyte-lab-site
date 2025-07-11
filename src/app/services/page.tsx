@@ -126,7 +126,7 @@ export default function Services() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-[#f6faff] via-[#e9ecf1] to-[#b7dfff] dark:from-[#0c1a26] dark:via-[#1a2a3a] dark:to-[#2a4a6a] py-24 overflow-hidden">
+              <section className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-background via-muted to-border py-24 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             {...textReveal}
@@ -137,7 +137,7 @@ export default function Services() {
           <motion.p
             {...textReveal}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-[#0c1a26] dark:text-[#e9ecf1] mb-8 max-w-5xl mx-auto font-light text-pretty"
+            className="text-xl md:text-2xl text-foreground mb-8 max-w-5xl mx-auto font-light text-pretty"
           >
             Comprehensive software development solutions tailored to your business needs
           </motion.p>
@@ -148,7 +148,7 @@ export default function Services() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#45a8e6] to-[#76c5f3] text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45a8e6] focus-visible:ring-offset-2"
+              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Get a Quote
             </Link>
@@ -157,7 +157,7 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-white dark:bg-[#0c1a26]">
+      <section className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             {...staggerContainer}
@@ -172,29 +172,29 @@ export default function Services() {
               >
                 <div className="relative z-10">
                   <motion.div 
-                    className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                    className="w-16 h-16 bg-[#0c1a26]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
                     whileHover={{ rotate: 5 }}
                     transition={{ duration: 0.2 }}
                   >
                     {service.icon}
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-4 text-balance">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#0c1a26] dark:text-[#e9ecf1] mb-6 leading-relaxed text-pretty">
-                    {service.description}
-                  </p>
+                                <h3 className="text-2xl font-bold text-foreground mb-4 text-balance">
+                {service.title}
+              </h3>
+              <p className="text-foreground mb-6 leading-relaxed text-pretty">
+                {service.description}
+              </p>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
                       <motion.li 
                         key={featureIndex} 
-                        className="flex items-center text-sm text-[#0c1a26] dark:text-[#e9ecf1]"
+                        className="flex items-center text-sm text-foreground"
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: featureIndex * 0.05 }}
                         viewport={{ once: true }}
                       >
-                        <CheckCircle className="w-4 h-4 mr-2 text-[#45a8e6] flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 mr-2 text-primary flex-shrink-0" />
                         <span className="text-pretty">{feature}</span>
                       </motion.li>
                     ))}
@@ -207,7 +207,7 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-gradient-to-br from-[#f6faff] to-[#b7dfff] dark:from-[#1a2a3a] dark:to-[#2a4a6a]">
+      <section className="py-24 bg-gradient-to-br from-muted to-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...textReveal}
@@ -216,7 +216,7 @@ export default function Services() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-balance">
               My Process
             </h2>
-            <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
+            <p className="text-xl text-foreground text-pretty">
               A proven methodology for delivering exceptional results
             </p>
           </motion.div>
@@ -233,16 +233,16 @@ export default function Services() {
                 className="glass rounded-2xl p-8 text-center shadow-xl"
               >
                 <motion.div 
-                  className="text-3xl font-bold text-[#45a8e6] mb-2"
+                  className="text-3xl font-bold text-primary mb-2"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 >
                   {step.step}
                 </motion.div>
-                <div className="text-xl font-semibold text-[#0c1a26] dark:text-[#e9ecf1] mb-2 text-balance">
+                <div className="text-xl font-semibold text-foreground mb-2 text-balance">
                   {step.title}
                 </div>
-                <div className="text-[#0c1a26] dark:text-[#e9ecf1] text-base text-pretty">
+                <div className="text-foreground text-base text-pretty">
                   {step.description}
                 </div>
               </motion.div>

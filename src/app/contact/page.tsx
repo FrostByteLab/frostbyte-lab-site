@@ -47,7 +47,7 @@ export default function Contact() {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-[#f6faff] via-[#e9ecf1] to-[#b7dfff] dark:from-[#0c1a26] dark:via-[#1a2a3a] dark:to-[#2a4a6a] py-24 overflow-hidden">
+              <section className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-background via-muted to-border py-24 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             {...textReveal}
@@ -58,7 +58,7 @@ export default function Contact() {
           <motion.p
             {...textReveal}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-[#0c1a26] dark:text-[#e9ecf1] mb-8 max-w-5xl mx-auto font-light text-pretty"
+            className="text-xl md:text-2xl text-foreground mb-8 max-w-5xl mx-auto font-light text-pretty"
           >
             Ready to start your next project? Let's discuss how we can bring your vision to life with cutting-edge technology and innovative solutions.
           </motion.p>
@@ -66,7 +66,7 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-24 bg-white dark:bg-[#0c1a26]">
+      <section className="py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
@@ -77,7 +77,7 @@ export default function Contact() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-balance">
                 Get in Touch
               </h2>
-              <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] mb-8 text-pretty">
+              <p className="text-xl text-foreground mb-8 text-pretty">
                 Tell me about your project and I'll get back to you within 24 hours.
               </p>
               <ContactForm />
@@ -90,7 +90,7 @@ export default function Contact() {
               className="space-y-8"
             >
               <div>
-                <h3 className="text-2xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-6 text-balance">
+                <h3 className="text-2xl font-bold text-foreground mb-6 text-balance">
                   Contact Information
                 </h3>
                 <motion.div 
@@ -105,7 +105,7 @@ export default function Contact() {
                       className="flex items-center space-x-4"
                     >
                       <motion.div 
-                        className="w-12 h-12 bg-gradient-to-br from-[#45a8e6] to-[#76c5f3] rounded-xl flex items-center justify-center"
+                        className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center"
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -114,7 +114,7 @@ export default function Contact() {
                         </div>
                       </motion.div>
                       <div>
-                        <h4 className="font-semibold text-[#0c1a26] dark:text-[#e9ecf1] text-balance">
+                        <h4 className="font-semibold text-foreground text-balance">
                           {info.title}
                         </h4>
                         {info.link ? (
@@ -122,14 +122,14 @@ export default function Contact() {
                             href={info.link}
                             target={info.link.startsWith('http') ? '_blank' : '_self'}
                             rel={info.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                            className="text-[#45a8e6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45a8e6] focus-visible:ring-offset-2 rounded"
+                            className="text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
                             whileHover={{ x: 3 }}
                             transition={{ duration: 0.2 }}
                           >
                             {info.value}
                           </motion.a>
                         ) : (
-                          <p className="text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
+                          <p className="text-foreground text-pretty">
                             {info.value}
                           </p>
                         )}
@@ -143,7 +143,7 @@ export default function Contact() {
                 {...cardHover}
                 className="glass rounded-2xl p-8"
               >
-                <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-4 text-balance">
+                <h3 className="text-xl font-bold text-foreground mb-4 text-balance">
                   Services I Offer
                 </h3>
                 <motion.div 
@@ -155,9 +155,9 @@ export default function Contact() {
                       key={index}
                       {...cardHover}
                       transition={{ delay: index * 0.05 }}
-                      className="flex items-center text-[#0c1a26] dark:text-[#e9ecf1]"
+                      className="flex items-center text-foreground"
                     >
-                      <ArrowRight className="w-4 h-4 mr-2 text-[#45a8e6] flex-shrink-0" />
+                      <ArrowRight className="w-4 h-4 mr-2 text-primary flex-shrink-0" />
                       <span className="text-pretty">{service}</span>
                     </motion.div>
                   ))}
@@ -168,12 +168,12 @@ export default function Contact() {
                 {...cardHover}
                 className="glass rounded-2xl p-8"
               >
-                <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-4 text-balance">
+                <h3 className="text-xl font-bold text-foreground mb-4 text-balance">
                   What to Expect
                 </h3>
                 <motion.ul 
                   {...staggerContainer}
-                  className="space-y-3 text-[#0c1a26] dark:text-[#e9ecf1]"
+                  className="space-y-3 text-foreground"
                 >
                   {[
                     "Quick response within 24 hours",
@@ -187,7 +187,7 @@ export default function Contact() {
                       transition={{ delay: index * 0.1 }}
                       className="flex items-start"
                     >
-                      <ArrowRight className="w-4 h-4 mr-2 mt-1 text-[#45a8e6] flex-shrink-0" />
+                      <ArrowRight className="w-4 h-4 mr-2 mt-1 text-primary flex-shrink-0" />
                       <span className="text-pretty">{item}</span>
                     </motion.li>
                   ))}
@@ -199,7 +199,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-gradient-to-br from-[#f6faff] to-[#b7dfff] dark:from-[#1a2a3a] dark:to-[#2a4a6a]">
+      <section className="py-24 bg-gradient-to-br from-muted to-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             {...textReveal}
@@ -208,7 +208,7 @@ export default function Contact() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-balance">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
+            <p className="text-xl text-foreground text-pretty">
               Common questions about working with FrostByte Lab
             </p>
           </motion.div>
@@ -241,10 +241,10 @@ export default function Contact() {
                 transition={{ delay: index * 0.1 }}
                 className="glass rounded-2xl p-8"
               >
-                <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-3 text-balance">
+                <h3 className="text-xl font-bold text-foreground mb-3 text-balance">
                   {faq.question}
                 </h3>
-                <p className="text-[#0c1a26] dark:text-[#e9ecf1] leading-relaxed text-pretty">
+                <p className="text-foreground leading-relaxed text-pretty">
                   {faq.answer}
                 </p>
               </motion.div>
