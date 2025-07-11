@@ -1,5 +1,14 @@
+'use client';
+
+import Navigation from '@/components/layout/Navigation';
+import { 
+  motion, 
+  staggerContainer, 
+  cardHover, 
+  textReveal
+} from '@/lib/motion';
+import { Code, Brain, Smartphone, Leaf } from 'lucide-react';
 import Link from 'next/link';
-import MainLayout from '@/components/layout/MainLayout';
 
 export default function Projects() {
   const projects = [
@@ -13,7 +22,8 @@ export default function Projects() {
       link: "#",
       featured: true,
       status: "in-progress",
-      external: false
+      external: false,
+      icon: <Brain className="w-12 h-12" />
     },
     {
       title: "Personal Portfolio & Engineering Blog",
@@ -25,7 +35,8 @@ export default function Projects() {
       link: "https://chrisklemz.dev",
       featured: true,
       status: "live",
-      external: true
+      external: true,
+      icon: <Code className="w-12 h-12" />
     },
     {
       title: "AI-Powered Virtual Pet App",
@@ -37,7 +48,8 @@ export default function Projects() {
       link: "#",
       featured: false,
       status: "coming-soon",
-      external: false
+      external: false,
+      icon: <Smartphone className="w-12 h-12" />
     },
     {
       title: "Sustainable Living Storefront",
@@ -49,7 +61,8 @@ export default function Projects() {
       link: "#",
       featured: false,
       status: "planning",
-      external: false
+      external: false,
+      icon: <Leaf className="w-12 h-12" />
     }
   ];
 
@@ -82,226 +95,226 @@ export default function Projects() {
   };
 
   return (
-    <MainLayout>
+    <div className="relative">
+      <Navigation />
+
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            What We're Building at FrostByte Lab
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-            These are early-stage tools, platforms, and experiments currently being developed at FrostByte Lab. More projects are coming soon.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 transform hover:scale-105"
+      <section className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-[#f6faff] via-[#e9ecf1] to-[#b7dfff] dark:from-[#0c1a26] dark:via-[#1a2a3a] dark:to-[#2a4a6a] py-24 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1
+            {...textReveal}
+            className="text-5xl md:text-6xl font-bold mb-6 gradient-text text-balance"
           >
-            Start Your Project
-          </Link>
+            What We're Building at FrostByte Lab
+          </motion.h1>
+          <motion.p
+            {...textReveal}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-[#0c1a26] dark:text-[#e9ecf1] mb-8 max-w-5xl mx-auto font-light text-pretty"
+          >
+            These are early-stage tools, platforms, and experiments currently being developed at FrostByte Lab. More projects are coming soon.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-[#45a8e6] to-[#76c5f3] text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45a8e6] focus-visible:ring-offset-2"
+            >
+              Start Your Project
+            </Link>
+          </motion.div>
         </div>
       </section>
 
       {/* Featured Projects */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-24 bg-white dark:bg-[#0c1a26]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div
+            {...textReveal}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-balance">
               Current Projects
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
               Active development and live platforms
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <motion.div 
+            {...staggerContainer}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+          >
             {projects.filter(p => p.featured).map((project, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all duration-200">
-                <div className="aspect-video bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <p className="text-sm opacity-75">Project Preview</p>
+              <motion.div
+                key={index}
+                {...cardHover}
+                transition={{ delay: index * 0.1 }}
+                className="bg-gradient-to-br from-[#f6faff] to-[#b7dfff] dark:from-[#1a2a3a] dark:to-[#2a4a6a] rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 border border-transparent"
+              >
+                <motion.div 
+                  className="aspect-video flex items-center justify-center bg-white/10 dark:bg-[#0c1a26]/10"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="text-[#45a8e6] text-center">
+                    {project.icon}
+                    <p className="text-sm opacity-75 mt-2">Project Preview</p>
                   </div>
-                </div>
+                </motion.div>
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    <span className="text-sm font-medium text-[#45a8e6]">
                       {project.category}
                     </span>
                     {getStatusBadge(project.status)}
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-2xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-2 text-balance">
                     {project.title}
                   </h3>
                   {project.subtitle && (
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <p className="text-sm text-[#45a8e6] mb-4">
                       {project.subtitle}
                     </p>
                   )}
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  <p className="text-[#0c1a26] dark:text-[#e9ecf1] mb-6 text-pretty">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, techIndex) => (
-                      <span
+                      <motion.span
                         key={techIndex}
-                        className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full"
+                        className="px-3 py-1 bg-[#e9ecf1] dark:bg-[#1a2a3a] text-[#0c1a26] dark:text-[#e9ecf1] text-sm rounded-full"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: techIndex * 0.05 }}
+                        viewport={{ once: true }}
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                   {project.external ? (
-                    <a
+                    <motion.a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                      className="inline-flex items-center text-[#45a8e6] hover:underline font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45a8e6] focus-visible:ring-offset-2 rounded"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
                     >
                       Visit Project →
-                    </a>
+                    </motion.a>
                   ) : (
-                    <span className="inline-flex items-center text-gray-500 dark:text-gray-400 font-medium">
+                    <span className="inline-flex items-center text-[#b7dfff] font-medium">
                       {project.status === 'in-progress' ? 'In Development' : 'Coming Soon'}
                     </span>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* All Projects */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-24 bg-gradient-to-br from-[#f6faff] to-[#b7dfff] dark:from-[#1a2a3a] dark:to-[#2a4a6a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <motion.div
+            {...textReveal}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-balance">
               All Projects
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
               Complete portfolio of current and upcoming projects
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            {...staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
             {projects.map((project, index) => (
-              <div key={index} className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-200 border border-gray-200 dark:border-gray-700">
-                <div className="aspect-video bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <svg className="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <p className="text-xs opacity-75">Project Preview</p>
+              <motion.div
+                key={index}
+                {...cardHover}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white dark:bg-[#0c1a26] rounded-3xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-[#e9ecf1] dark:border-[#1a2a3a]"
+              >
+                <motion.div 
+                  className="aspect-video flex items-center justify-center bg-gradient-to-br from-[#f6faff] to-[#b7dfff] dark:from-[#1a2a3a] dark:to-[#2a4a6a]"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="text-[#45a8e6] text-center">
+                    {project.icon}
+                    <p className="text-xs opacity-75 mt-2">Project Preview</p>
                   </div>
-                </div>
+                </motion.div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    <span className="text-sm font-medium text-[#45a8e6]">
                       {project.category}
                     </span>
                     {getStatusBadge(project.status)}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-2 text-balance">
                     {project.title}
                   </h3>
                   {project.subtitle && (
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    <p className="text-sm text-[#45a8e6] mb-3">
                       {project.subtitle}
                     </p>
                   )}
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                  <p className="text-[#0c1a26] dark:text-[#e9ecf1] mb-4 text-sm text-pretty">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <span
+                      <motion.span
                         key={techIndex}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded"
+                        className="px-2 py-1 bg-[#e9ecf1] dark:bg-[#1a2a3a] text-[#0c1a26] dark:text-[#e9ecf1] text-xs rounded-full"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: techIndex * 0.05 }}
+                        viewport={{ once: true }}
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                     {project.technologies.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">
-                        +{project.technologies.length - 3} more
+                      <span className="px-2 py-1 bg-[#e9ecf1] dark:bg-[#1a2a3a] text-[#0c1a26] dark:text-[#e9ecf1] text-xs rounded-full">
+                        +{project.technologies.length - 3}
                       </span>
                     )}
                   </div>
                   {project.external ? (
-                    <a
+                    <motion.a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
+                      className="inline-flex items-center text-[#45a8e6] hover:underline font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45a8e6] focus-visible:ring-offset-2 rounded"
+                      whileHover={{ x: 3 }}
+                      transition={{ duration: 0.2 }}
                     >
                       Visit Project →
-                    </a>
+                    </motion.a>
                   ) : (
-                    <span className="inline-flex items-center text-gray-500 dark:text-gray-400 text-sm font-medium">
+                    <span className="inline-flex items-center text-[#b7dfff] font-medium text-sm">
                       {project.status === 'in-progress' ? 'In Development' : 'Coming Soon'}
                     </span>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      {/* Future Projects Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              What's Next
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              More innovative projects are in the pipeline
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 text-center">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              More Projects Coming Soon
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-              We're constantly experimenting with new technologies and building innovative solutions. 
-              Stay tuned for more AI-powered tools, mobile apps, and digital products.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200"
-            >
-              Get in Touch
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Build Something Together?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Let's create something amazing together. Get in touch to discuss your project requirements.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200 transform hover:scale-105"
-          >
-            Start Your Project
-          </Link>
-        </div>
-      </section>
-    </MainLayout>
+    </div>
   );
 } 

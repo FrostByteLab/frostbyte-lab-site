@@ -1,178 +1,257 @@
-import MainLayout from '@/components/layout/MainLayout';
+'use client';
+
+import Navigation from '@/components/layout/Navigation';
 import ContactForm from '@/components/ui/ContactForm';
+import { 
+  motion, 
+  staggerContainer, 
+  cardHover, 
+  textReveal,
+  fadeInLeft,
+  fadeInRight 
+} from '@/lib/motion';
+import { Mail, Clock, MessageSquare, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
+  const contactInfo = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: "Email",
+      value: "hello@frostbytelab.com",
+      link: "mailto:hello@frostbytelab.com"
+    },
+    {
+      icon: <MessageSquare className="w-6 h-6" />,
+      title: "LinkedIn",
+      value: "linkedin.com/in/chrisklemz",
+      link: "https://linkedin.com/in/chrisklemz"
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: "Response Time",
+      value: "Within 24 hours"
+    }
+  ];
+
+  const services = [
+    "Web Development",
+    "AI Integration", 
+    "Mobile Apps",
+    "API Development",
+    "Technical Consulting",
+    "Digital Products"
+  ];
+
   return (
-    <MainLayout>
+    <div className="relative">
+      <Navigation />
+
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Let's Work Together
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-            Ready to bring your vision to life? Get in touch to discuss your project and start building something amazing.
-          </p>
+      <section className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-[#f6faff] via-[#e9ecf1] to-[#b7dfff] dark:from-[#0c1a26] dark:via-[#1a2a3a] dark:to-[#2a4a6a] py-24 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h1
+            {...textReveal}
+            className="text-5xl md:text-6xl font-bold mb-6 gradient-text text-balance"
+          >
+            Let's Build Something Amazing
+          </motion.h1>
+          <motion.p
+            {...textReveal}
+            transition={{ delay: 0.2 }}
+            className="text-xl md:text-2xl text-[#0c1a26] dark:text-[#e9ecf1] mb-8 max-w-5xl mx-auto font-light text-pretty"
+          >
+            Ready to start your next project? Let's discuss how we can bring your vision to life with cutting-edge technology and innovative solutions.
+          </motion.p>
         </div>
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Info */}
-            <div className="lg:col-span-1">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+      <section className="py-24 bg-white dark:bg-[#0c1a26]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <motion.div
+              {...fadeInLeft}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text text-balance">
                 Get in Touch
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
-                I'm always excited to hear about new projects and opportunities. Whether you have a specific project in mind or just want to explore possibilities, let's start a conversation.
+              <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] mb-8 text-pretty">
+                Tell me about your project and I'll get back to you within 24 hours.
               </p>
+              <ContactForm />
+            </motion.div>
 
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4">
-                    <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
-                    <a
-                      href="mailto:hello@frostbytelab.com"
-                      className="text-blue-600 dark:text-blue-400 hover:underline"
+            {/* Contact Info */}
+            <motion.div
+              {...fadeInRight}
+              viewport={{ once: true, amount: 0.3 }}
+              className="space-y-8"
+            >
+              <div>
+                <h3 className="text-2xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-6 text-balance">
+                  Contact Information
+                </h3>
+                <motion.div 
+                  {...staggerContainer}
+                  className="space-y-6"
+                >
+                  {contactInfo.map((info, index) => (
+                    <motion.div
+                      key={index}
+                      {...cardHover}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center space-x-4"
                     >
-                      hello@frostbytelab.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center mr-4">
-                    <svg className="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Response Time</h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Within 24 hours
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center mr-4">
-                    <svg className="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Availability</h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Currently accepting new projects
-                    </p>
-                  </div>
-                </div>
+                      <motion.div 
+                        className="w-12 h-12 bg-gradient-to-br from-[#45a8e6] to-[#76c5f3] rounded-xl flex items-center justify-center"
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <div className="text-white">
+                          {info.icon}
+                        </div>
+                      </motion.div>
+                      <div>
+                        <h4 className="font-semibold text-[#0c1a26] dark:text-[#e9ecf1] text-balance">
+                          {info.title}
+                        </h4>
+                        {info.link ? (
+                          <motion.a
+                            href={info.link}
+                            target={info.link.startsWith('http') ? '_blank' : '_self'}
+                            rel={info.link.startsWith('http') ? 'noopener noreferrer' : ''}
+                            className="text-[#45a8e6] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#45a8e6] focus-visible:ring-offset-2 rounded"
+                            whileHover={{ x: 3 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {info.value}
+                          </motion.a>
+                        ) : (
+                          <p className="text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
+                            {info.value}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </div>
 
-              <div className="mt-8 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-3">
+              <motion.div 
+                {...cardHover}
+                className="glass rounded-2xl p-8"
+              >
+                <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-4 text-balance">
+                  Services I Offer
+                </h3>
+                <motion.div 
+                  {...staggerContainer}
+                  className="grid grid-cols-2 gap-2"
+                >
+                  {services.map((service, index) => (
+                    <motion.div
+                      key={index}
+                      {...cardHover}
+                      transition={{ delay: index * 0.05 }}
+                      className="flex items-center text-[#0c1a26] dark:text-[#e9ecf1]"
+                    >
+                      <ArrowRight className="w-4 h-4 mr-2 text-[#45a8e6] flex-shrink-0" />
+                      <span className="text-pretty">{service}</span>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+
+              <motion.div 
+                {...cardHover}
+                className="glass rounded-2xl p-8"
+              >
+                <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-4 text-balance">
                   What to Expect
                 </h3>
-                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                  <li className="flex items-center">
-                    <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Free initial consultation
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Detailed project proposal
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Transparent pricing
-                  </li>
-                  <li className="flex items-center">
-                    <svg className="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    Regular progress updates
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Project Inquiry
-                </h2>
-                <ContactForm />
-              </div>
-            </div>
+                <motion.ul 
+                  {...staggerContainer}
+                  className="space-y-3 text-[#0c1a26] dark:text-[#e9ecf1]"
+                >
+                  {[
+                    "Quick response within 24 hours",
+                    "Free initial consultation and project assessment",
+                    "Detailed proposal with timeline and pricing",
+                    "Ongoing communication throughout development"
+                  ].map((item, index) => (
+                    <motion.li 
+                      key={index}
+                      {...cardHover}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-start"
+                    >
+                      <ArrowRight className="w-4 h-4 mr-2 mt-1 text-[#45a8e6] flex-shrink-0" />
+                      <span className="text-pretty">{item}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+      <section className="py-24 bg-gradient-to-br from-[#f6faff] to-[#b7dfff] dark:from-[#1a2a3a] dark:to-[#2a4a6a]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            {...textReveal}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text text-balance">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-[#0c1a26] dark:text-[#e9ecf1] text-pretty">
               Common questions about working with FrostByte Lab
             </p>
-          </div>
+          </motion.div>
 
-          <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                What is your typical project timeline?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Project timelines vary based on complexity and scope. Simple websites might take 2-4 weeks, while complex applications can take 2-6 months. I'll provide a detailed timeline during our initial consultation.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Do you provide ongoing support after launch?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Yes! I offer various support and maintenance packages to ensure your project continues to perform optimally. This includes bug fixes, updates, and feature additions.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                What technologies do you specialize in?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                I specialize in modern web technologies including React, Next.js, TypeScript, Node.js, and AI integration with OpenAI APIs. I also work with mobile development using React Native.
-              </p>
-            </div>
-
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                How do you handle project communication?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                I maintain regular communication through your preferred channels - email, video calls, or project management tools. You'll receive weekly progress updates and have direct access to me throughout the project.
-              </p>
-            </div>
-          </div>
+          <motion.div 
+            {...staggerContainer}
+            className="space-y-6"
+          >
+            {[
+              {
+                question: "What is your typical project timeline?",
+                answer: "Project timelines vary based on complexity, but most projects take 4-12 weeks from start to finish. I'll provide a detailed timeline during our initial consultation."
+              },
+              {
+                question: "Do you work with startups and small businesses?",
+                answer: "Absolutely! I specialize in working with startups and small businesses, offering flexible solutions that fit your budget and timeline."
+              },
+              {
+                question: "What technologies do you specialize in?",
+                answer: "I work with modern technologies including React, Next.js, TypeScript, Python, Django, and AI/ML integration. I choose the best tech stack for each project."
+              },
+              {
+                question: "Do you provide ongoing support after launch?",
+                answer: "Yes, I offer post-launch support including bug fixes, updates, and maintenance. We can discuss ongoing support options during project planning."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                {...cardHover}
+                transition={{ delay: index * 0.1 }}
+                className="glass rounded-2xl p-8"
+              >
+                <h3 className="text-xl font-bold text-[#0c1a26] dark:text-[#e9ecf1] mb-3 text-balance">
+                  {faq.question}
+                </h3>
+                <p className="text-[#0c1a26] dark:text-[#e9ecf1] leading-relaxed text-pretty">
+                  {faq.answer}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
-    </MainLayout>
+    </div>
   );
 } 
